@@ -10,13 +10,9 @@ const io = require("socket.io")(server, {
 });
 
 io.on("connection", (socket) => {
-  console.log("Connection established!");
-
   socket.emit("your id", socket.id);
-  socket.on("message", (message) => {
-    console.log("Message received: " + message);
-
-    io.emit("message", message);
+  socket.on("send message", (body) => {
+    io.emit("message", body);
   });
 });
 

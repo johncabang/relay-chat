@@ -1,18 +1,52 @@
-import React from "react";
+import React, { useState, useEffect, useRef } from "react";
 import io from "socket.io-client";
 import Chat from "./components/Chat/Chat";
 
-const socket = io("http://localhost:3001/");
-
 function App() {
-  socket.on("connect", () => {
-    socket.send("Hello from John");
+  const [yourID, setYourID] = useState();
+  const [messages, setMessages] = useState([]);
+  const [message, setMessage] = useState("");
 
-    socket.on("message", (message) => {
-      // my message
+  const socketRef = useRef();
+
+  useEffect(() => {
+    socketRef.current = io.connect("http://localhost:3001/");
+
+    socketRef.current.on("your id", (id) => {
+      setYourID(id);
     });
-  });
-  return <Chat />;
+
+    socketRef.current.on("message", (message) => {
+      console.log("here");
+      receivedMessage(message);
+    });
+  }, []);
+
+  function receivedMessage(message) {
+    setMessages((oldMsgs) => [...oldMsgs, message]);
+  }
+
+  function sendMessage(e) {
+    e.preventDefault();
+    const messageObject = {
+      body: message,
+      id: yourID,
+    };
+    setMessage("");
+    socketRef.current.emit("send message", messageObject);
+  }
+
+  return (
+    <div>
+      <h3 style={{ margin: 50 }}>relay-chat</h3>
+      <Chat
+        messages={messages}
+        setMessage={setMessage}
+        sendMessage={sendMessage}
+        yourID={yourID}
+      />
+    </div>
+  );
 }
 
 export default App;

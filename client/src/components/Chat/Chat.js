@@ -2,23 +2,11 @@ import React from "react";
 import MessageBox from "../MessageBox/MessageBox";
 import Messages from "../Messages/Messages";
 
-function Chat() {
+function Chat({ messages, setMessage, sendMessage, yourID }) {
   return (
     <div>
-      <Messages
-        messages={[
-          "Hello this is message 1!",
-          "Hello this is message 2!",
-          "Hello this is message 3!",
-          "Hello this is message 4!",
-          "Hello this is message 5!",
-        ]}
-      />
-      <MessageBox
-        onSendMessage={(message) => {
-          alert("Message sent: " + message);
-        }}
-      />
+      <Messages messages={messages} yourID={yourID} />
+      <MessageBox setMessage={setMessage} sendMessage={sendMessage} />
     </div>
   );
 }
