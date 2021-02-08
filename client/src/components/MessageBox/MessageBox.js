@@ -1,5 +1,5 @@
 import React from "react";
-// import { Button, TextField } from "@material-ui/core";
+import { Button, TextField } from "@material-ui/core";
 
 function MessageBox({ message, setMessage, sendMessage }) {
   function handleChange(e) {
@@ -8,7 +8,7 @@ function MessageBox({ message, setMessage, sendMessage }) {
 
   return (
     <div>
-      {/* <form onSubmit={sendMessage}>
+      <form onSubmit={sendMessage}>
         <TextField
           style={{ margin: 50, width: 400 }}
           variant="filled"
@@ -17,21 +17,21 @@ function MessageBox({ message, setMessage, sendMessage }) {
           onChange={handleChange}
           placeholder="Say something..."
         />
-        <Button variant="outlined" style={{ margin: 50 }}>
+        <Button variant="outlined" type="submit" style={{ margin: 50 }}>
           Send
         </Button>
-      </form> */}
+      </form>
 
       {/* TODO - FIX / Implement Material UI  */}
 
-      <form onSubmit={sendMessage}>
+      {/* <form onSubmit={sendMessage}>
         <textarea
           value={message}
           onChange={handleChange}
           placeholder="Say something..."
         />
         <button>Send</button>
-      </form>
+      </form> */}
     </div>
   );
 }

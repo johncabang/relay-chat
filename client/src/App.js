@@ -12,9 +12,9 @@ function App() {
   useEffect(() => {
     socketRef.current = io.connect("http://localhost:3001/");
 
-    socketRef.current.on("your id", (id) => {
-      setYourID(id);
-    });
+    // socketRef.current.on("your id", (id) => {
+    //   setYourID(id);
+    // });
 
     socketRef.current.on("message", (message) => {
       console.log("here");
