@@ -8,30 +8,27 @@ function MessageBox({ message, setMessage, sendMessage }) {
 
   return (
     <div>
-      <form onSubmit={sendMessage}>
+      <form
+        onSubmit={sendMessage}
+        style={{
+          display: "flex",
+          justifyContent: "space-between",
+          alignItems: "flex-end",
+          padding: 15,
+        }}
+      >
         <TextField
-          style={{ margin: 50, width: 400 }}
+          style={{ width: 400 }}
           variant="filled"
           margin="normal"
           value={message}
           onChange={handleChange}
           placeholder="Say something..."
         />
-        <Button variant="outlined" type="submit" style={{ margin: 50 }}>
+        <Button variant="outlined" type="submit" style={{ marginLeft: 30 }}>
           Send
         </Button>
       </form>
-
-      {/* TODO - FIX / Implement Material UI  */}
-
-      {/* <form onSubmit={sendMessage}>
-        <textarea
-          value={message}
-          onChange={handleChange}
-          placeholder="Say something..."
-        />
-        <button>Send</button>
-      </form> */}
     </div>
   );
 }

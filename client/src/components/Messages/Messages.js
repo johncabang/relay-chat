@@ -10,36 +10,54 @@ import {
 
 function Messages({ messages, yourID }) {
   return (
-    <List>
-      {messages.map((message, index) => {
-        if (message.id === yourID) {
+    <div style={{ overflow: "scroll" }}>
+      <List style={{ height: 300 }}>
+        {messages.map((message, index) => {
+          if (message.id === yourID) {
+            return (
+              <ListItem
+                alignItems="flex-start"
+                key={index}
+                style={{
+                  alignItems: "center",
+                  backgroundColor: "#1982FC",
+                  color: "#FFF",
+                }}
+              >
+                <ListItemAvatar>
+                  <Avatar
+                    alt="Avatar Image"
+                    src="https://source.unsplash.com/random"
+                  />
+                </ListItemAvatar>
+                <ListItemText primary={message.body} />
+              </ListItem>
+            );
+          }
           return (
-            <ListItem alignItems="flex-start" key={index}>
+            <ListItem
+              alignItems="flex-start"
+              key={index}
+              style={{
+                alignItems: "center",
+                backgroundColor: "#BCBCBC",
+                color: "#FFF",
+              }}
+            >
               <ListItemAvatar>
                 <Avatar
                   alt="Avatar Image"
-                  src="https://placeimg.com/200/200/animals"
+                  src="https://source.unsplash.com/collection/190727/
+                  "
                 />
               </ListItemAvatar>
               <ListItemText primary={message.body} />
             </ListItem>
           );
-        }
-        return (
-          <ListItem alignItems="flex-start" key={index}>
-            <ListItemAvatar>
-              <Avatar
-                alt="Avatar Image"
-                src="https://placeimg.com/200/200/animals"
-              />
-            </ListItemAvatar>
-            <ListItemText primary={message.body} />
-          </ListItem>
-        );
-      })}
-
-      {/* <Divider variant="inset" component="li" /> */}
-    </List>
+        })}
+        {/* <Divider variant="inset" component="li" /> */}
+      </List>
+    </div>
   );
 }
 

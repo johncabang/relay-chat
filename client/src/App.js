@@ -12,9 +12,9 @@ function App() {
   useEffect(() => {
     socketRef.current = io.connect("http://localhost:3001/");
 
-    // socketRef.current.on("your id", (id) => {
-    //   setYourID(id);
-    // });
+    socketRef.current.on("your id", (id) => {
+      setYourID(id);
+    });
 
     socketRef.current.on("message", (message) => {
       console.log("here");
@@ -37,9 +37,14 @@ function App() {
   }
 
   return (
-    <div>
+    <div
+      style={{
+        textAlign: "center",
+      }}
+    >
       <h3 style={{ margin: 50 }}>relay-chat</h3>
       <Chat
+        message={message}
         messages={messages}
         setMessage={setMessage}
         sendMessage={sendMessage}
