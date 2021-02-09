@@ -12,7 +12,7 @@ function Chat({ message, messages, setMessage, sendMessage, yourID }) {
           justifyContent: "flex-end",
           flexDirection: "column",
           width: 500,
-          height: 500,
+          height: 600,
           borderRadius: 20,
         }}
       >

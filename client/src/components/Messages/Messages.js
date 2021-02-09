@@ -1,7 +1,7 @@
 import React from "react";
+import ScrollToBottom from "react-scroll-to-bottom";
 import {
   Avatar,
-  // Divider,
   List,
   ListItem,
   ListItemAvatar,
@@ -10,8 +10,13 @@ import {
 
 function Messages({ messages, yourID }) {
   return (
-    <div style={{ overflow: "scroll" }}>
-      <List style={{ height: 300 }}>
+    <ScrollToBottom>
+      <List
+        style={{
+          height: 400,
+          width: "100%",
+        }}
+      >
         {messages.map((message, index) => {
           if (message.id === yourID) {
             return (
@@ -55,9 +60,8 @@ function Messages({ messages, yourID }) {
             </ListItem>
           );
         })}
-        {/* <Divider variant="inset" component="li" /> */}
       </List>
-    </div>
+    </ScrollToBottom>
   );
 }
 
