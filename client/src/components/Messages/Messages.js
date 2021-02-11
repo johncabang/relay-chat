@@ -13,7 +13,7 @@ function Messages({ messages, yourID }) {
     <ScrollToBottom>
       <List
         style={{
-          height: 400,
+          height: 440,
           width: "100%",
         }}
       >

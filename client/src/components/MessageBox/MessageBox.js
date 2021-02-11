@@ -1,5 +1,5 @@
 import React from "react";
-import { Button, TextField } from "@material-ui/core";
+import { Button, Icon, TextField } from "@material-ui/core";
 
 function MessageBox({ message, setMessage, sendMessage }) {
   function handleChange(e) {
@@ -13,19 +13,24 @@ function MessageBox({ message, setMessage, sendMessage }) {
         style={{
           display: "flex",
           justifyContent: "space-between",
-          alignItems: "flex-end",
+          alignItems: "center",
           padding: 15,
         }}
       >
         <TextField
-          style={{ width: 400 }}
-          variant="filled"
+          style={{ width: 400, paddingLeft: 15 }}
+          variant="standard"
           margin="normal"
           value={message}
           onChange={handleChange}
           placeholder="Say something..."
         />
-        <Button variant="outlined" type="submit" style={{ marginLeft: 30 }}>
+        <Button
+          variant="contained"
+          type="submit"
+          color="primary"
+          style={{ marginLeft: 30, textTransform: "none", borderRadius: 25 }}
+        >
           Send
         </Button>
       </form>
